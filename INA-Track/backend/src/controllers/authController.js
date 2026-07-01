@@ -9,7 +9,13 @@ export async function login(req, res) {
   const { email, password } = req.body;
   const user = readData().users.find((item) => item.email.toLowerCase() === email?.toLowerCase());
 
-  if (!user || !(await bcrypt.compare(password, user.password))) {
+  const isValidPassword = user
+    ? user.password?.startsWith('$2')
+      ? await bcrypt.compare(password, user.password)
+      : password === user.password
+    : false;
+
+  if (!user || !isValidPassword) {
     return res.status(401).json({ message: 'Credenciales invalidas' });
   }
 

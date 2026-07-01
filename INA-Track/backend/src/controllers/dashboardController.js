@@ -11,6 +11,9 @@ export function studentDashboard(req, res) {
   if (req.user.role === 'parent' && !isParentOf(data, req.user.id, student.id)) {
     return res.status(403).json({ message: 'No autorizado' });
   }
+  if (req.user.role === 'instructor' || req.user.role === 'admin') {
+    // instructores y administradores pueden ver el dashboard de cualquier estudiante
+  }
 
   const attendance = data.attendance.filter((record) => record.userId === student.id);
   const achievements = data.userAchievements
@@ -19,6 +22,12 @@ export function studentDashboard(req, res) {
       ...item,
       achievement: data.achievements.find((achievement) => achievement.id === item.achievementId)
     }));
+
+  const nextLevel = data.levels.find((level) => level.minXp > student.totalXp) || null;
+  const currentLevel = data.levels.find((level) => level.levelNumber === student.currentLevel) || null;
+  const progressToNextLevel = nextLevel
+    ? Math.round(((student.totalXp - (currentLevel?.minXp || 0)) / (nextLevel.minXp - (currentLevel?.minXp || 0))) * 100)
+    : 100;
 
   return res.json({
     student: publicUser(student),
@@ -31,9 +40,12 @@ export function studentDashboard(req, res) {
     xp: {
       total: student.totalXp,
       currentLevel: student.currentLevel,
-      nextLevel: data.levels.find((level) => level.minXp > student.totalXp)
+      nextLevel,
+      progressToNextLevel,
+      currentLevelMinXp: currentLevel?.minXp || 0,
+      nextLevelMinXp: nextLevel?.minXp || null
     },
-    streak: data.streaks.find((streak) => streak.userId === student.id),
+    streak: data.streaks.find((streak) => streak.userId === student.id) || { currentCount: 0, bestCount: 0 },
     achievements,
     xpEvents: data.xpEvents.filter((event) => event.userId === student.id).slice(0, 6)
   });

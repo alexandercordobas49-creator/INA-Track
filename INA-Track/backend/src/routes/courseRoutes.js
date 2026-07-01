@@ -4,7 +4,7 @@ import { authenticateToken, authorizeRoles } from '../middleware/authMiddleware.
 
 const router = Router();
 
-router.get('/', authenticateToken, listCourses);
+router.get('/', listCourses);
 router.post('/', authenticateToken, authorizeRoles('admin'), createCourse);
 
 export default router;

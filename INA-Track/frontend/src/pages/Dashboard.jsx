@@ -92,6 +92,9 @@ export default function Dashboard({ selectedStudent }) {
 
   const achievements = dashboard.achievements || [];
   const xpEvents = dashboard.xpEvents || [];
+  const progressToNextLevel = dashboard.xp?.progressToNextLevel;
+  const progressWidth = typeof progressToNextLevel === 'number' ? progressToNextLevel : 0;
+  const progressLabel = typeof progressToNextLevel === 'number' ? `${progressToNextLevel}%` : 'N/A';
 
   return (
     <div className="p-6 space-y-6">
@@ -134,10 +137,11 @@ export default function Dashboard({ selectedStudent }) {
           <div
             className="h-full bg-gradient-to-r from-primary-500 to-primary-600 transition-all duration-700"
             style={{
-              width: `${dashboard.xp?.progressToNextLevel || 0}%`,
+              width: `${progressWidth}%`,
             }}
           />
         </div>
+        <p className="mt-2 text-sm text-neutral-500">Progreso: {progressLabel}</p>
       </div>
 
       {/* PANELS */}
