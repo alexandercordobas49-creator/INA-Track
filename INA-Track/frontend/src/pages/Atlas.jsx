@@ -16,7 +16,7 @@ export default function Atlas() {
 
   return (
     <>
-      <ModuleHeader eyebrow="Modulo 7" title="Atlas IA" description="Asistente local que responde usando los datos actuales." />
+      <ModuleHeader eyebrow="Asistencia de IA" title="Atlas IA" description="Asistente inteligente que responde usando los datos actuales." />
       <div className="grid gap-5 lg:grid-cols-[1fr_360px]">
         <Panel title="Consulta">
           <textarea className="min-h-36 w-full rounded-lg border border-neutral-300 px-4 py-3 font-medium transition-all duration-300 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-200 bg-neutral-50" value={question} onChange={(event) => setQuestion(event.target.value)} />

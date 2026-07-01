@@ -61,4 +61,10 @@ app.post("/api/atlas/ask", (req, res) => {
   });
 });
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 INA-Track API escuchando en puerto ${PORT}`);
+  console.log(`📡 Frontend conectado desde http://localhost:5173`);
+});
+
 export default app;

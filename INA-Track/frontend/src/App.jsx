@@ -3,25 +3,13 @@ import { api } from './api.js';
 import AppShell from './components/AppShell.jsx';
 import Achievements from './pages/Achievements.jsx';
 import Atlas from './pages/Atlas.jsx';
-import Attendance from './pages/Attendance.jsx';
 import Auth from './pages/Auth.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import Roles from './pages/Roles.jsx';
-import XPLevels from './pages/XPLevels.jsx';
-import ParentView from './pages/ParentView.jsx';
-import CompetencyRoutes from './pages/CompetencyRoutes.jsx';
-
-const modules = [
-  { id: 'auth', label: 'Login y registro' },
-  { id: 'roles', label: 'Roles' },
-  { id: 'parents', label: 'Vista padre' },
-  { id: 'routes', label: 'Rutas INATEC' },
-  { id: 'attendance', label: 'Asistencia' },
-  { id: 'dashboard', label: 'Dashboard estudiante' },
-  { id: 'xp', label: 'XP y niveles' },
-  { id: 'achievements', label: 'Logros y rachas' },
-  { id: 'atlas', label: 'Atlas IA' }
-];
+import Progress from './pages/Progress.jsx';
+import Courses from './pages/Courses.jsx';
+import Goals from './pages/Goals.jsx';
+import Rewards from './pages/Rewards.jsx';
+import Community from './pages/Community.jsx';
 
 export default function App() {
   const [activeModule, setActiveModule] = useState('auth');
@@ -70,21 +58,19 @@ export default function App() {
 
   return (
     <AppShell
-      modules={modules}
       activeModule={activeModule}
       onSelectModule={setActiveModule}
       session={session}
       onLogout={logout}
     >
       {activeModule === 'auth' && <Auth onSession={saveSession} />}
-      {activeModule === 'roles' && <Roles {...pageProps} />}
-      {activeModule === 'attendance' && <Attendance {...pageProps} />}
       {activeModule === 'dashboard' && <Dashboard {...pageProps} />}
-      {activeModule === 'xp' && <XPLevels {...pageProps} />}
-      {activeModule === 'achievements' && <Achievements {...pageProps} />}
+      {activeModule === 'progress' && <Progress {...pageProps} />}
+      {activeModule === 'courses' && <Courses {...pageProps} />}
+      {activeModule === 'goals' && <Goals {...pageProps} />}
+      {activeModule === 'rewards' && <Rewards {...pageProps} />}
       {activeModule === 'atlas' && <Atlas />}
-      {activeModule === 'parents' && session?.user?.role === 'parent' && <ParentView session={session} />}
-      {activeModule === 'routes' && <CompetencyRoutes session={session} />}
+      {activeModule === 'community' && <Community {...pageProps} />}
     </AppShell>
   );
 }
