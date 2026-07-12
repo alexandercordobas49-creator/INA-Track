@@ -13,7 +13,7 @@ app.use(express.json());
 
 // 🧪 TEST BASE
 app.get("/", (req, res) => {
-  res.json({ message: "INA-Track API funcionando 🚀" });
+  res.json({ message: "INARA API funcionando 🚀" });
 });
 
 // 👤 USERS
@@ -44,7 +44,7 @@ app.post("/api/auth/login", (req, res) => {
   const { email } = req.body;
 
   res.json({
-    token: "demo-token-ina-track",
+    token: "demo-token-INARA",
     user: {
       email,
       role: "student"
@@ -63,7 +63,7 @@ app.post("/api/atlas/ask", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 INA-Track API escuchando en puerto ${PORT}`);
+  console.log(`🚀 INARA API escuchando en puerto ${PORT}`);
   console.log(`📡 Frontend conectado desde http://localhost:5173`);
 });
 

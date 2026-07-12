@@ -19,7 +19,7 @@ export default function Sidebar({ session, activeModule, onSelectModule, onLogou
           </div>
           <div>
             <p className="text-sm font-black bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-              INA-Track
+              INARA
             </p>
             <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
               Plataforma educativa

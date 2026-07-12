@@ -1,5 +1,5 @@
 export async function api(path, options = {}) {
-  const session = JSON.parse(localStorage.getItem('ina-track-session') || 'null');
+  const session = JSON.parse(localStorage.getItem('INARA-session') || 'null');
   const token = session?.token;
 
   const response = await fetch(`/api${path}`, {

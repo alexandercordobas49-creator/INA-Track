@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { readData } from '../data/store.js';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'ina-track-secret';
+const JWT_SECRET = process.env.JWT_SECRET || 'INARA-secret';
 
 export function signToken(user) {
   return jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, { expiresIn: '8h' });

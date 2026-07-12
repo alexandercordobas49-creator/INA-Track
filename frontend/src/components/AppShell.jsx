@@ -27,7 +27,7 @@ export default function AppShell({ modules, activeModule, onSelectModule, sessio
           <div className="sticky top-0 z-10 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
             <div className="flex items-center justify-between px-6 py-4">
               <div className="flex items-center gap-4">
-                <h1 className="text-xl font-bold text-slate-900">INA-Track</h1>
+                <h1 className="text-xl font-bold text-slate-900">INARA</h1>
               </div>
               <div className="flex items-center gap-4">
                 <button className="p-2 rounded-lg hover:bg-slate-100 transition-all text-xl">🔔</button>

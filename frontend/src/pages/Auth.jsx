@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { api } from '../api.js';
 
 export default function Auth({ onSession }) {
-  const [loginForm, setLoginForm] = useState({ email: 'valeria@ina-track.test', password: 'demo123' });
+  const [loginForm, setLoginForm] = useState({ email: 'valeria@INARA.test', password: 'demo123' });
   const [registerForm, setRegisterForm] = useState({
     firstName: '',
     lastName: '',
@@ -59,11 +59,11 @@ export default function Auth({ onSession }) {
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/40 rounded-full">
               <span className="text-lg">🎯</span>
-              <p className="text-xs font-bold uppercase tracking-wider text-emerald-400">INA-TRACK</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-emerald-400">INARA</p>
             </div>
             
             <h1 className="text-4xl font-bold text-slate-200 mb-2">Bienvenido a</h1>
-            <h2 className="text-6xl font-black bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 bg-clip-text text-transparent mb-4">INA-Track</h2>
+            <h2 className="text-6xl font-black bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 bg-clip-text text-transparent mb-4">INARA</h2>
             <p className="text-emerald-300/80 italic text-lg font-semibold mb-8">Tu camino hacia el éxito académico — con IA.</p>
             
             <div className="space-y-5 my-8 border-t border-emerald-500/20 pt-8">
@@ -141,7 +141,7 @@ export default function Auth({ onSession }) {
                 <label htmlFor="remember" className="text-sm font-medium text-slate-300">Recuérdame</label>
               </div>
               <button className="w-full rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 px-6 py-4 font-bold text-white shadow-lg shadow-emerald-600/20 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-600/40 hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-lg" type="button" onClick={login}>
-                🚀 Entrar a INA-Track
+                🚀 Entrar a INARA
               </button>
               <p className="text-center text-xs text-slate-400">¿Olvidaste tu contraseña? <a href="#" className="font-bold text-emerald-400 hover:text-emerald-300 transition">Recupérala aquí</a></p>
             </div>

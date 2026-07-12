@@ -14,7 +14,7 @@ import Community from './pages/Community.jsx';
 export default function App() {
   const [activeModule, setActiveModule] = useState('auth');
   const [session, setSession] = useState(() => {
-    const saved = localStorage.getItem('ina-track-session');
+    const saved = localStorage.getItem('INARA-session');
     return saved ? JSON.parse(saved) : null;
   });
   const [users, setUsers] = useState([]);
@@ -37,14 +37,14 @@ export default function App() {
 
   function saveSession(nextSession) {
     setSession(nextSession);
-    localStorage.setItem('ina-track-session', JSON.stringify(nextSession));
+    localStorage.setItem('INARA-session', JSON.stringify(nextSession));
     setActiveModule('dashboard');
     reload();
   }
 
   function logout() {
     setSession(null);
-    localStorage.removeItem('ina-track-session');
+    localStorage.removeItem('INARA-session');
     setActiveModule('auth');
   }
 

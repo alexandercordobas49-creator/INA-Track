@@ -1,4 +1,4 @@
-# INA-Track
+# INARA
 
 Proyecto completo para abrir directamente en VS Code.
 
@@ -9,7 +9,7 @@ Proyecto completo para abrir directamente en VS Code.
 
 ## Como usar
 
-1. Abre la carpeta `INA-Track` en VS Code.
+1. Abre la carpeta `INARA` en VS Code.
 2. Abre la terminal integrada.
 3. Ejecuta:
 
@@ -38,9 +38,9 @@ Todos usan la contrasena:
 demo123
 ```
 
-- Estudiante: `valeria@ina-track.test`
-- Docente: `marco@ina-track.test`
-- Administrador: `admin@ina-track.test`
+- Estudiante: `valeria@INARA.test`
+- Docente: `marco@INARA.test`
+- Administrador: `admin@INARA.test`
 
 ## Modulos funcionales
 

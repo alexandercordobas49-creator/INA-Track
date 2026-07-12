@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
-  res.json({ ok: true, service: 'INA-Track API' });
+  res.json({ ok: true, service: 'INARA API' });
 });
 
 app.use('/api/auth', authRoutes);

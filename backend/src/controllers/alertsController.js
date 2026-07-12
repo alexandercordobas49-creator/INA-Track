@@ -54,7 +54,7 @@ export async function runAlerts(req, res) {
 
         if (process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
           try {
-            const emailResult = await sendEmailNotification(parent.email, `Alerta INA-Track: ${student.firstName}`, `<p>${message}</p>`);
+            const emailResult = await sendEmailNotification(parent.email, `Alerta INARA: ${student.firstName}`, `<p>${message}</p>`);
             note.status = emailResult.success ? 'sent' : 'failed';
             note.sentAt = new Date().toISOString();
             note.deliveryInfo = emailResult;
