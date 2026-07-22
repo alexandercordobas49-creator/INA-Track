@@ -1,0 +1,402 @@
+/* ============================================
+   ANIMACIONES GLOBALES PARA BOTONES
+   ============================================ */
+
+/* Base Button Animations */
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes buttonHover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.98);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.4);
+  }
+}
+
+/* Slide Animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Spin Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Checkmark */
+@keyframes checkmark {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   BUTTON CLASS ANIMATIONS
+   ============================================ */
+
+/* Primary Button Animation */
+.btn-primary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  animation: buttonHover 0.3s ease;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  animation: buttonClick 0.2s ease;
+  transform: scale(0.98);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--hover-bg, #f3f4f6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+
+/* Icon Button */
+.btn-icon {
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.btn-icon:hover {
+  background-color: rgba(16, 185, 129, 0.1);
+  transform: scale(1.1);
+}
+
+.btn-icon:active {
+  animation: buttonPress 0.2s ease;
+}
+
+/* Gradient Button */
+.btn-gradient {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+}
+
+.btn-gradient:active {
+  transform: scale(0.98);
+  box-shadow: 0 5px 15px rgba(5, 150, 105, 0.2);
+}
+
+/* Loading State */
+.btn-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn-loading::after {
+  content: '';
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+/* Disabled State */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transition: none;
+}
+
+button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ============================================
+   SPECIFIC COMPONENT ANIMATIONS
+   ============================================ */
+
+/* Atlas Buttons */
+.chip-modern {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+}
+
+.chip-modern:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(5, 150, 105, 0.2);
+}
+
+.chip-modern:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Send Button Animation */
+.btn-send-modern {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-send-modern:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+}
+
+.btn-send-modern:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
+}
+
+/* Input Icon Buttons */
+.input-icon-btn {
+  transition: all 0.2s ease;
+}
+
+.input-icon-btn:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
+}
+
+.input-icon-btn:active {
+  transform: scale(0.9);
+}
+
+/* Sidebar Buttons */
+.sidebar-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-btn:hover {
+  background-color: rgba(16, 185, 129, 0.05);
+  border-left: 4px solid #059669;
+  padding-left: calc(1rem - 4px);
+}
+
+/* Dashboard Buttons */
+.dashboard-btn {
+  transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+  background-color: rgba(16, 185, 129, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Card Hover */
+.card-clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  border-color: rgba(5, 150, 105, 0.5);
+}
+
+/* Metric Cards */
+.metric-card {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(5, 150, 105, 0.15);
+  border-color: #10b981;
+}
+
+.metric-card:active {
+  transform: translateY(-2px);
+}
+
+/* Navigation Buttons */
+nav button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav button:hover {
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
+nav button.active {
+  animation: slideInLeft 0.4s ease;
+}
+
+/* ============================================
+   FEEDBACK ANIMATIONS
+   ============================================ */
+
+/* Success Feedback */
+.feedback-success {
+  animation: slideInUp 0.4s ease;
+}
+
+.feedback-success::before {
+  content: '✓';
+  animation: checkmark 0.5s ease;
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* Loading Feedback */
+.feedback-loading {
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Increase touch target size */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reduce animation intensity on mobile */
+  .btn-primary:hover,
+  .chip-modern:hover,
+  .card-clickable:hover {
+    transform: scale(1.02);
+  }
+
+  /* Disable active animation on touch devices */
+  @supports (hover: none) {
+    button:active {
+      transform: scale(0.99);
+    }
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-icon,
+  .btn-gradient,
+  .chip-modern,
+  .metric-card,
+  .card-clickable {
+    transition: none;
+  }
+
+  button:hover,
+  button:active {
+    transform: none;
+  }
+
+  .feedback-loading {
+    animation: none;
+  }
+}

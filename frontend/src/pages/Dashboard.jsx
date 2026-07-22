@@ -94,7 +94,6 @@ export default function Dashboard({ selectedStudent, session }) {
 
       {/* Progreso General */}
       <div className="rounded-3xl bg-gradient-to-r from-teal-600 to-teal-700 p-8 text-white relative overflow-hidden shadow-xl">
-        <div className="absolute -right-20 -top-20 opacity-10 text-9xl">🤖</div>
         <div className="relative z-10 grid md:grid-cols-2 gap-8">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wider opacity-90 mb-2">
@@ -128,14 +127,7 @@ export default function Dashboard({ selectedStudent, session }) {
           </div>
         </div>
 
-        {/* IA Assistant bubble */}
-        <div className="absolute -bottom-8 -right-8 bg-white rounded-full p-6 shadow-lg">
-          <span className="text-5xl">🤖</span>
-        </div>
-        <div className="absolute bottom-4 right-20 bg-white rounded-2xl p-4 shadow-lg max-w-xs">
-          <p className="text-sm font-bold text-teal-700">¡Sigue así!</p>
-          <p className="text-xs text-slate-600 mt-1">Tu dedicación está dando resultados. 💚</p>
-        </div>
+
       </div>
 
       {/* Tus clases de hoy */}
@@ -280,9 +272,10 @@ export default function Dashboard({ selectedStudent, session }) {
         <div className="text-5xl flex-shrink-0">💬</div>
         <div>
           <p className="text-lg font-semibold text-slate-900 italic mb-2">
-            "La educación es el arma más poderosa que puedes usar para cambiar el mundo."
+            "Si la patria es pequeña, uno grande la sueña."
           </p>
-          <p className="text-sm text-slate-600">— Nelson Mandela</p>
+          <p className="text-sm text-slate-600 mb-3">— Rubén Darío</p>
+          <p className="text-sm text-slate-600 italic">Porque cada estudiante que aprende hoy, construye la Nicaragua que soñamos mañana.</p>
         </div>
       </div>
     </div>
