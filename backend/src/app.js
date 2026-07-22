@@ -21,6 +21,17 @@ app.use(cors());
 app.use(express.json());
 
 
+// Ruta principal de la API
+app.get('/', (req, res) => {
+  res.json({
+    name: 'INARA API',
+    version: '2.0',
+    status: 'running'
+  });
+});
+
+
+// Health check
 app.get('/api/health', (req, res) => {
   res.json({
     ok: true,
@@ -29,6 +40,7 @@ app.get('/api/health', (req, res) => {
 });
 
 
+// Rutas
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/courses', courseRoutes);
