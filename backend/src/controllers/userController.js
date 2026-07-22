@@ -1,8 +1,17 @@
 import { publicUser, readData, writeData } from '../data/store.js';
 import { roles } from '../models/User.js';
+import { findAllUsers } from '../repositories/UserRepository.js';
 
-export function listUsers(req, res) {
-  return res.json(readData().users.map(publicUser));
+export async function listUsers(req, res) {
+  try {
+    const users = await findAllUsers();
+    return res.json(users);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: 'Error obteniendo usuarios desde PostgreSQL'
+    });
+  }
 }
 
 export function listRoles(req, res) {
@@ -21,14 +30,27 @@ export function createParentRelation(req, res) {
   const parent = data.users.find((u) => u.id === parentId);
   const child = data.users.find((u) => u.id === childId);
 
-  if (!parent || parent.role !== 'parent') return res.status(400).json({ message: 'Padre inválido' });
-  if (!child || child.role !== 'student') return res.status(400).json({ message: 'Estudiante inválido' });
+  if (!parent || parent.role !== 'parent')
+    return res.status(400).json({ message: 'Padre inválido' });
+
+  if (!child || child.role !== 'student')
+    return res.status(400).json({ message: 'Estudiante inválido' });
 
   data.parentRelations = data.parentRelations || [];
-  const exists = data.parentRelations.some((r) => r.parentId === parentId && r.childId === childId);
-  if (exists) return res.status(409).json({ message: 'Relación ya existe' });
 
-  const relation = { id: `relation-${Date.now()}`, parentId, childId };
+  const exists = data.parentRelations.some(
+    (r) => r.parentId === parentId && r.childId === childId
+  );
+
+  if (exists)
+    return res.status(409).json({ message: 'Relación ya existe' });
+
+  const relation = {
+    id: `relation-${Date.now()}`,
+    parentId,
+    childId
+  };
+
   data.parentRelations.push(relation);
   writeData(data);
 
@@ -37,21 +59,46 @@ export function createParentRelation(req, res) {
 
 export function deleteParentRelation(req, res) {
   const data = readData();
-  const rel = data.parentRelations.find((r) => r.id === req.params.id);
-  if (!rel) return res.status(404).json({ message: 'Relación no encontrada' });
-  data.parentRelations = data.parentRelations.filter((r) => r.id !== req.params.id);
+
+  const rel = data.parentRelations.find(
+    (r) => r.id === req.params.id
+  );
+
+  if (!rel)
+    return res.status(404).json({
+      message: 'Relación no encontrada'
+    });
+
+  data.parentRelations = data.parentRelations.filter(
+    (r) => r.id !== req.params.id
+  );
+
   writeData(data);
-  return res.json({ message: 'Eliminado' });
+
+  return res.json({
+    message: 'Eliminado'
+  });
 }
 
 export function updateRole(req, res) {
   const data = readData();
-  const user = data.users.find((item) => item.id === req.params.id);
 
-  if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
-  if (!roles.includes(req.body.role)) return res.status(400).json({ message: 'Rol invalido' });
+  const user = data.users.find(
+    (item) => item.id === req.params.id
+  );
+
+  if (!user)
+    return res.status(404).json({
+      message: 'Usuario no encontrado'
+    });
+
+  if (!roles.includes(req.body.role))
+    return res.status(400).json({
+      message: 'Rol inválido'
+    });
 
   user.role = req.body.role;
+
   writeData(data);
 
   return res.json(publicUser(user));
