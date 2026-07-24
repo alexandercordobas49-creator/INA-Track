@@ -1,16 +1,50 @@
-import { publicUser, readData } from '../data/store.js';
+import XPService from "../services/xpService.js";
+import { findUserById } from "../repositories/UserRepository.js";
 
-export function xpSummary(req, res) {
-  const data = readData();
-  const user = data.users.find((item) => item.id === req.params.userId);
 
-  if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
+export async function xpSummary(req, res) {
 
-  return res.json({
-    user: publicUser(user),
-    levels: data.levels,
-    currentLevel: data.levels.find((level) => level.levelNumber === user.currentLevel),
-    nextLevel: data.levels.find((level) => level.minXp > user.totalXp),
-    xpEvents: data.xpEvents.filter((event) => event.userId === user.id)
-  });
+    try {
+
+        const userId = req.params.userId;
+
+        const user = await findUserById(userId);
+
+        if (!user) {
+            return res.status(404).json({
+                message: "Usuario no encontrado"
+            });
+        }
+
+
+        const xpEvents = await XPService.getHistory(userId);
+
+        const totalXp = await XPService.getTotalXp(userId);
+
+
+        return res.json({
+
+            user: {
+                id: user.id,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                total_xp: totalXp,
+                current_level: user.current_level
+            },
+
+            xpEvents
+
+        });
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        return res.status(500).json({
+            message: "Error obteniendo información de XP"
+        });
+
+    }
+
 }
